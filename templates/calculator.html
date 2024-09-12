@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Calculator</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: #f6f1f1;
+            padding: 20px;
+            padding-left: 7%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .calculator input {
+            width: 86%;
+            height: 50px;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            text-align: right;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .calculator button {
+            width: 20%;
+            height: 50px;
+            margin: 5px;
+            font-size: 1.2em;
+            background-color: #b3006b;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .calculator button:hover {
+            background-color: #b3006b;
+        }
+
+        .calculator button.operation {
+            background-color: #7d6c78;
+        }
+
+        .calculator button.operation:hover {
+            background-color: #7d6c78;
+        }
+
+        /* Responsive styling for larger screens */
+        @media (min-width: 576px) {
+            .calculator {
+                max-width: 500px;
+            }
+
+            .calculator input {
+                height: 60px;
+                font-size: 2em;
+            }
+
+            .calculator button {
+                height: 60px;
+                font-size: 1.5em;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .calculator {
+                max-width: 600px;
+            }
+
+            .calculator input {
+                height: 65px;
+                font-size: 2.5em;
+            }
+
+            .calculator button {
+                height: 65px;
+                font-size: 1.6em;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .calculator {
+                max-width: 700px;
+            }
+
+            .calculator input {
+                height: 70px;
+                font-size: 3em;
+            }
+
+            .calculator button {
+                height: 70px;
+                font-size: 1.8em;
+            }
+        }
+        .calculator button:hover {
+            background-color: #d11f7f;
+            color: #fff;
+            transform: scale(1.05); /* Button enlarges slightly when hovered */
+        }
+
+        .calculator button.operation {
+            background-color: #7d6c78;
+        }
+
+        .calculator button.operation:hover {
+            background-color: #9e8494;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <form id="calcForm" method="POST">
+            <!-- Display the result or the default value -->
+            <input type="text" id="display" name="display" value="{{ result }}" readonly>
+            <div>
+                <button type="button" onclick="addToDisplay('1')">1</button>
+                <button type="button" onclick="addToDisplay('2')">2</button>
+                <button type="button" onclick="addToDisplay('3')">3</button>
+                <button type="button" class="operation" onclick="addToDisplay('+')">+</button>
+            </div>
+            <div>
+                <button type="button" onclick="addToDisplay('4')">4</button>
+                <button type="button" onclick="addToDisplay('5')">5</button>
+                <button type="button" onclick="addToDisplay('6')">6</button>
+                <button type="button" class="operation" onclick="addToDisplay('-')">-</button>
+            </div>
+            <div>
+                <button type="button" onclick="addToDisplay('7')">7</button>
+                <button type="button" onclick="addToDisplay('8')">8</button>
+                <button type="button" onclick="addToDisplay('9')">9</button>
+                <button type="button" class="operation" onclick="addToDisplay('*')">*</button>
+            </div>
+            <div>
+                <button type="button" onclick="addToDisplay('0')">0</button>
+                <button type="button" onclick="clearDisplay()">C</button>
+                <button type="submit">=</button>
+                <button type="button" class="operation" onclick="addToDisplay('/')">/</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Function to add values to the display
+        function addToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        // Function to clear the display
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+    </script>
+</body>
+</html>
